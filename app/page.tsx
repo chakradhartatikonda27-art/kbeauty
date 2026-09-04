@@ -175,31 +175,69 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Interactive Categories Horizontal Pills with Motion */}
-        <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
-          {Object.values(CONCERNS).map((concern, index) => (
-            <motion.div
-              key={concern.slug}
-              whileHover={{ y: -4 }}
-              transition={{ duration: 0.2 }}
-            >
-              <Link
-                href={`/concerns/${concern.slug}`}
-                className="group bg-white p-5 rounded-2xl border border-brand-grey-border min-w-[210px] hover:border-brand-rose hover:shadow-card transition-smooth flex flex-col justify-between block h-full"
+        {/* Interactive Categories Cards with Modern Framer Motion & High-Res Photography */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          {Object.values(CONCERNS).map((concern, index) => {
+            // Map each concern to a high-res image
+            const imageMap: Record<string, string> = {
+              acne: '/images/anua_heartleaf_toner.jpg',
+              pigmentation: '/images/axisy_dark_spot_serum.jpg',
+              dryness: '/images/cosrx_snail_mucin.jpg',
+              redness: '/images/skin1004_ampoule.jpg',
+              barrier: '/images/boj_relief_sun.jpg',
+              pores: '/images/kbeauty_glass_skin_glow.jpg',
+              dullness: '/images/laneige_lip_mask.jpg',
+              'anti-ageing': '/images/kbeauty_hero_editorial.jpg',
+            };
+
+            const imageSrc = imageMap[concern.slug] || '/images/kbeauty_glass_skin_glow.jpg';
+
+            return (
+              <motion.div
+                key={concern.slug}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative rounded-2xl overflow-hidden shadow-card border border-brand-grey-border aspect-[4/5] block"
               >
-                <div>
-                  <span className="text-[10px] uppercase font-bold text-brand-rose tracking-wider">{concern.tagline}</span>
-                  <h3 className="font-serif text-lg font-bold text-brand-obsidian group-hover:text-brand-rose transition-colors mt-1">
-                    {concern.title}
-                  </h3>
-                </div>
-                <div className="pt-4 flex items-center justify-between text-xs text-brand-charcoal-light border-t border-brand-grey-border/60 mt-4">
-                  <span>{concern.productIds.length} Products</span>
-                  <ArrowRight className="w-4 h-4 text-brand-rose group-hover:translate-x-1 transition-transform" />
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                <Link href={`/concerns/${concern.slug}`} className="block w-full h-full">
+                  {/* Background High-Res Image with Framer Motion Zoom */}
+                  <Image
+                    src={imageSrc}
+                    alt={concern.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                  />
+
+                  {/* Gradient Overlay Mask */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian/90 via-brand-obsidian/40 to-transparent transition-opacity duration-300" />
+
+                  {/* Top Category Tag */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="bg-white/90 backdrop-blur-md text-brand-rose px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-subtle border border-brand-rose/20">
+                      {concern.tagline}
+                    </span>
+                  </div>
+
+                  {/* Bottom Text Overlay */}
+                  <div className="absolute inset-x-4 bottom-4 z-10 space-y-2">
+                    <h3 className="font-serif text-xl font-bold text-white group-hover:text-brand-blush transition-colors">
+                      {concern.title}
+                    </h3>
+
+                    <div className="flex items-center justify-between text-xs text-white/80 pt-2 border-t border-white/20">
+                      <span className="font-medium">{concern.productIds.length} Clinical Formulas</span>
+                      <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-brand-rose transition-colors">
+                        <ArrowRight className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 transition-transform" />
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
@@ -453,22 +491,38 @@ export default function HomePage() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {[
-            { title: 'ACNE', tagline: 'Calm + Clear', slug: 'acne', bg: 'bg-emerald-50 border-emerald-200' },
-            { title: 'PIGMENTATION', tagline: 'Brighten + Even', slug: 'pigmentation', bg: 'bg-amber-50 border-amber-200' },
-            { title: 'DRY SKIN', tagline: 'Deep Hydration', slug: 'dryness', bg: 'bg-blue-50 border-blue-200' },
-            { title: 'SENSITIVE', tagline: 'Barrier First', slug: 'redness', bg: 'bg-rose-50 border-rose-200' },
-            { title: 'DULLNESS', tagline: 'Glow Mode', slug: 'dullness', bg: 'bg-orange-50 border-orange-200' },
-            { title: 'ANTI-AGEING', tagline: 'Slow Ageing', slug: 'anti-ageing', bg: 'bg-purple-50 border-purple-200' },
+            { title: 'ACNE', tagline: 'Calm + Clear', slug: 'acne', image: '/images/anua_heartleaf_toner.jpg' },
+            { title: 'PIGMENTATION', tagline: 'Brighten + Even', slug: 'pigmentation', image: '/images/axisy_dark_spot_serum.jpg' },
+            { title: 'DRY SKIN', tagline: 'Deep Hydration', slug: 'dryness', image: '/images/cosrx_snail_mucin.jpg' },
+            { title: 'SENSITIVE', tagline: 'Barrier First', slug: 'redness', image: '/images/skin1004_ampoule.jpg' },
+            { title: 'DULLNESS', tagline: 'Glow Mode', slug: 'dullness', image: '/images/laneige_lip_mask.jpg' },
+            { title: 'ANTI-AGEING', tagline: 'Slow Ageing', slug: 'anti-ageing', image: '/images/kbeauty_hero_editorial.jpg' },
           ].map((tile, idx) => (
-            <Link
+            <motion.div
               key={idx}
-              href={`/concerns/${tile.slug}`}
-              className={`p-6 rounded-2xl border text-center flex flex-col justify-between h-44 hover:shadow-card transition-smooth ${tile.bg}`}
+              whileHover={{ y: -6, scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="relative rounded-2xl overflow-hidden shadow-subtle border border-brand-grey-border h-48 block group"
             >
-              <span className="text-[10px] uppercase font-bold tracking-widest text-brand-charcoal-light">{tile.tagline}</span>
-              <h3 className="font-serif text-lg font-bold text-brand-obsidian">{tile.title}</h3>
-              <span className="text-[11px] font-semibold uppercase text-brand-rose hover:underline">Explore →</span>
-            </Link>
+              <Link href={`/concerns/${tile.slug}`} className="block w-full h-full p-4 flex flex-col justify-between relative z-10">
+                <Image
+                  src={tile.image}
+                  alt={tile.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700 opacity-85"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian/90 via-brand-obsidian/40 to-transparent z-0" />
+                <span className="relative z-10 text-[9px] uppercase font-bold tracking-widest text-brand-rose bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-full border border-brand-rose/20 w-max shadow-subtle">
+                  {tile.tagline}
+                </span>
+                <div className="relative z-10">
+                  <h3 className="font-serif text-lg font-bold text-white group-hover:text-brand-blush transition-colors">{tile.title}</h3>
+                  <span className="text-[11px] font-semibold uppercase text-white/80 group-hover:text-brand-rose transition-colors flex items-center gap-1 mt-1">
+                    Explore <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
