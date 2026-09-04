@@ -7,6 +7,8 @@ import MobileNav from '@/components/layout/MobileNav';
 import AISearchOverlay from '@/components/ai/AISearchOverlay';
 import AISkinAssistantDrawer from '@/components/ai/AISkinAssistantDrawer';
 import CartDrawer from '@/components/cart/CartDrawer';
+import LuxuryIntroPreloader from '@/components/layout/LuxuryIntroPreloader';
+import FloatingAIScannerPill from '@/components/ai/FloatingAIScannerPill';
 
 export const metadata: Metadata = {
   title: 'SEOUL LABS UK — Korean Beauty, Intelligently Matched',
@@ -28,6 +30,7 @@ export default function RootLayout({
     <html lang="en-GB">
       <body className="antialiased flex flex-col min-h-screen">
         <ShopProvider>
+          <LuxuryIntroPreloader />
           <Header />
           <AISearchOverlay />
           <AISkinAssistantDrawer />
@@ -37,6 +40,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <MobileNav />
+          <FloatingAIScannerPill />
         </ShopProvider>
       </body>
     </html>
