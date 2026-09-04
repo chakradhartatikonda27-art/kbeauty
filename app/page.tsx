@@ -287,107 +287,158 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION: VIRAL TIKTOK BEAUTY MODEL REVIEWS & VIDEO SHOWCASE */}
+      {/* SECTION: ULTRA-LUXURY BEAUTY REVIEWS & INTERACTIVE ROUTINE DEMOS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-brand-obsidian text-white rounded-3xl p-8 md:p-14 shadow-float space-y-10 border border-brand-charcoal-light/30">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
-            <div>
-              <span className="badge-editorial bg-brand-rose text-white mb-2 inline-block">
-                ★ As Seen On TikTok & Instagram
-              </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold">
+        <div className="bg-brand-obsidian text-white rounded-3xl p-6 md:p-12 shadow-float space-y-10 border border-brand-charcoal-light/30 relative overflow-hidden">
+          {/* Subtle Ambient Background Gradient Glow */}
+          <div className="absolute -top-32 -right-32 w-96 h-96 bg-brand-rose/20 rounded-full filter blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-brand-blush/10 rounded-full filter blur-3xl pointer-events-none" />
+
+          {/* Section Header */}
+          <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
+            <div className="space-y-2">
+              <div className="inline-flex items-center gap-2 bg-brand-rose/20 text-brand-rose px-3.5 py-1.5 rounded-full border border-brand-rose/40 text-[11px] font-bold uppercase tracking-wider">
+                <Star className="w-3.5 h-3.5 fill-brand-rose" />
+                <span>Verified UK Beauty Creator Stories</span>
+              </div>
+              <h2 className="font-serif text-3xl md:text-5xl font-bold tracking-tight">
                 Real Beauty Reviews & Routine Demos
               </h2>
             </div>
-            <p className="text-xs text-white/70 max-w-md">
-              Watch UK beauty creators demonstrate their step-by-step Korean glass skin routines with authentic products.
+            <p className="text-xs md:text-sm text-white/70 max-w-md leading-relaxed">
+              Watch UK skincare creators demonstrate their step-by-step Korean glass skin routines with authentic formulations.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-            {/* Main Featured Promoting Video Card */}
-            <div className="lg:col-span-2 relative rounded-2xl overflow-hidden bg-brand-charcoal aspect-video md:aspect-[16/9] border border-white/10 shadow-card group">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="object-cover w-full h-full opacity-90 group-hover:scale-105 transition-transform duration-700"
-              >
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-applying-face-cream-41130-large.mp4" type="video/mp4" />
-              </video>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian via-brand-obsidian/40 to-transparent flex flex-col justify-end p-6 md:p-8 space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full border-2 border-brand-rose overflow-hidden relative bg-brand-rose shrink-0">
-                    <Image src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Beauty Creator" fill className="object-cover" />
+          {/* Main Showcase Layout */}
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Showcase Player: Main Creator Feature */}
+            <div className="lg:col-span-7 relative rounded-3xl overflow-hidden bg-brand-charcoal aspect-[4/3] border-2 border-white/15 shadow-float group">
+              {/* Background Poster & Video Stream */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={PRODUCTS[0].images[0] || "/images/kbeauty_glass_skin_glow.jpg"}
+                  alt="Beauty Creator Routine Demo"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
+                />
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  poster="/images/kbeauty_glass_skin_glow.jpg"
+                  className="object-cover w-full h-full opacity-90 relative z-10"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-applying-face-cream-41130-large.mp4" type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian via-brand-obsidian/30 to-transparent z-15" />
+              </div>
+
+              {/* Top Bar: Creator Info & Live Tag */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-20">
+                <div className="flex items-center gap-3 bg-brand-obsidian/85 backdrop-blur-md px-3.5 py-2 rounded-full border border-white/20">
+                  <div className="w-8 h-8 rounded-full border border-brand-rose overflow-hidden relative shrink-0">
+                    <Image src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="Jiwoo Beauty" fill className="object-cover" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-sm text-white">@jiwoo.beauty • London UK</h4>
-                    <span className="text-[11px] text-brand-rose font-semibold">Verified K-Beauty Creator • 142k Followers</span>
+                    <h4 className="font-bold text-xs text-white">@jiwoo.beauty • London UK</h4>
+                    <span className="text-[10px] text-brand-rose font-semibold">142k Followers</span>
                   </div>
                 </div>
 
-                <p className="text-xs md:text-sm font-medium text-white/90 leading-relaxed italic">
-                  &ldquo;This BoJ sunscreen + Snail Mucin combo gave me actual glass skin in 7 days! No white cast, zero breakout flareups, just pure luminous hydration.&rdquo;
+                <div className="bg-emerald-500/90 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full border border-emerald-400/40 flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-white animate-ping" />
+                  <span>Glass Skin Routine</span>
+                </div>
+              </div>
+
+              {/* Bottom Interactive Content Overlay */}
+              <div className="absolute inset-x-4 bottom-4 z-20 space-y-4">
+                <div className="bg-white/95 backdrop-blur-md p-5 rounded-2xl border border-brand-grey-border shadow-float text-brand-obsidian space-y-3">
+                  <p className="text-xs md:text-sm font-medium text-brand-obsidian leading-relaxed italic">
+                    &ldquo;This BoJ sunscreen + Snail Mucin combo gave me actual glass skin in 7 days! No white cast, zero breakout flareups, just pure luminous hydration.&rdquo;
+                  </p>
+
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-brand-grey-border/60">
+                    <div className="flex items-center gap-3">
+                      <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-brand-ivory border border-brand-grey-border shrink-0">
+                        <Image src="/images/boj_relief_sun.jpg" alt="Relief Sun SPF" fill className="object-cover" />
+                      </div>
+                      <div>
+                        <span className="text-[10px] uppercase font-bold text-brand-rose tracking-wider">Featured in Video</span>
+                        <h5 className="font-bold text-xs line-clamp-1">Relief Sun : Rice + Probiotics SPF50+</h5>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => addToCart(PRODUCTS[0])}
+                      className="bg-brand-obsidian text-white text-xs font-semibold px-4 py-2.5 rounded-full hover:bg-brand-rose transition-colors flex items-center justify-center gap-1.5 shrink-0 shadow-subtle"
+                    >
+                      <ShoppingBag className="w-3.5 h-3.5" />
+                      <span>Quick Add • £15.50</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right List: Interactive Review Cards */}
+            <div className="lg:col-span-5 space-y-4">
+              <div className="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-brand-rose/40 space-y-4 hover:bg-white/15 transition-all shadow-subtle">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full border-2 border-brand-rose overflow-hidden relative shrink-0">
+                      <Image src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200&auto=format&fit=crop" alt="Chloe" fill className="object-cover" />
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-sm text-white">@chloe_skincare</h5>
+                      <span className="text-[11px] text-white/70">Manchester, UK • Verified Review</span>
+                    </div>
+                  </div>
+                  <div className="flex text-amber-400 text-xs">★★★★★</div>
+                </div>
+
+                <p className="text-xs text-white/90 leading-relaxed">
+                  &ldquo;My acne redness completely calmed down after 3 days of using Anua Heartleaf toner. It is now a permanent step in my AM routine!&rdquo;
                 </p>
 
-                <div className="flex items-center justify-between pt-2 border-t border-white/10">
-                  <div className="flex items-center gap-2 text-xs text-white/80 font-bold">
-                    <span>Featured Product:</span>
-                    <span className="bg-brand-rose/30 text-brand-rose px-2.5 py-1 rounded border border-brand-rose/40">
-                      Relief Sun Rice SPF50+ (£15.50)
-                    </span>
-                  </div>
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-brand-blush">Matched for Sensitive & Acne Skin</span>
+                  <button onClick={() => addToCart(PRODUCTS[2])} className="text-xs font-bold text-brand-rose hover:text-white uppercase flex items-center gap-1">
+                    Shop Toner (£19.50) →
+                  </button>
+                </div>
+              </div>
 
-                  <button
-                    onClick={() => addToCart(PRODUCTS[0])}
-                    className="bg-brand-rose text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-brand-rose-dark transition-colors flex items-center gap-1.5"
-                  >
-                    <ShoppingBag className="w-3.5 h-3.5" /> Shop Featured SPF
+              <div className="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-white/10 space-y-4 hover:bg-white/10 transition-all">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full border border-brand-rose overflow-hidden relative shrink-0">
+                      <Image src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=200&auto=format&fit=crop" alt="Maya" fill className="object-cover" />
+                    </div>
+                    <div>
+                      <h5 className="font-bold text-sm text-white">@maya_kbeauty</h5>
+                      <span className="text-[11px] text-white/70">Edinburgh, UK • Verified Review</span>
+                    </div>
+                  </div>
+                  <div className="flex text-amber-400 text-xs">★★★★★</div>
+                </div>
+
+                <p className="text-xs text-white/90 leading-relaxed">
+                  &ldquo;The AI skin quiz matched me to products under £45 that actually repaired my broken barrier after over-exfoliating.&rdquo;
+                </p>
+
+                <div className="pt-2 border-t border-white/10 flex items-center justify-between">
+                  <span className="text-[11px] font-semibold text-brand-blush">Barrier Repair Routine</span>
+                  <button onClick={openSkinQuiz} className="text-xs font-bold text-brand-rose hover:text-white uppercase flex items-center gap-1">
+                    Start Skin Match →
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Secondary UGC Review Cards */}
-            <div className="space-y-4">
-              <div className="bg-white/5 p-5 rounded-2xl border border-white/10 space-y-3 hover:bg-white/10 transition-colors">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full border border-brand-rose overflow-hidden relative shrink-0">
-                    <Image src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200&auto=format&fit=crop" alt="Chloe" fill className="object-cover" />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-xs text-white">@chloe_skincare</h5>
-                    <div className="flex text-amber-400 text-[10px]">★★★★★</div>
-                  </div>
-                </div>
-                <p className="text-xs text-white/80 leading-relaxed">
-                  &ldquo;My acne redness completely calmed down after 3 days of using Anua Heartleaf toner. It is now a permanent step in my AM routine!&rdquo;
-                </p>
-                <button onClick={() => addToCart(PRODUCTS[2])} className="text-[11px] text-brand-rose font-bold uppercase hover:underline">
-                  Shop Heartleaf Toner (£19.50) →
-                </button>
-              </div>
-
-              <div className="bg-white/5 p-5 rounded-2xl border border-white/10 space-y-3 hover:bg-white/10 transition-colors">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full border border-brand-rose overflow-hidden relative shrink-0">
-                    <Image src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=200&auto=format&fit=crop" alt="Maya" fill className="object-cover" />
-                  </div>
-                  <div>
-                    <h5 className="font-bold text-xs text-white">@maya_kbeauty</h5>
-                    <div className="flex text-amber-400 text-[10px]">★★★★★</div>
-                  </div>
-                </div>
-                <p className="text-xs text-white/80 leading-relaxed">
-                  &ldquo;The AI skin quiz matched me to products under £45 that actually repaired my broken barrier after over-exfoliating.&rdquo;
-                </p>
-                <button onClick={openSkinQuiz} className="text-[11px] text-brand-rose font-bold uppercase hover:underline">
-                  Take AI Skin Quiz →
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       </section>
