@@ -8,7 +8,7 @@ import { useShop } from '@/context/ShopContext';
 import { PRODUCTS, BRANDS } from '@/data/products';
 import { CONCERNS } from '@/data/concerns';
 import ProductCard from '@/components/product/ProductCard';
-import { Sparkles, ArrowRight, Star, ShieldCheck, HeartHandshake, Plus, Check, Play, Zap, RefreshCw, ShoppingBag } from 'lucide-react';
+import { Sparkles, ArrowRight, Star, ShieldCheck, HeartHandshake, Plus, Check, Play, Zap, RefreshCw, ShoppingBag, Volume2, VolumeX } from 'lucide-react';
 
 export default function HomePage() {
   const { openSkinQuiz, openAISearch, addToCart } = useShop();
@@ -44,89 +44,136 @@ export default function HomePage() {
 
   return (
     <div className="space-y-16 md:space-y-24 pb-16 overflow-hidden">
-      {/* SECTION 1 — HERO WITH AMBIENT VIDEO & EDITORIAL LAYERING */}
-      <section className="relative min-h-[90vh] flex items-center justify-center bg-brand-ivory border-b border-brand-grey-border">
-        {/* Background Video Loop & Editorial Overlay */}
+      {/* SECTION 1 — HERO WITH PROMOTED BEAUTY MODEL VIDEO SHOWCASE */}
+      <section className="relative min-h-[85vh] flex items-center justify-center bg-brand-ivory border-b border-brand-grey-border py-12 md:py-20">
+        {/* Background Ambient Video Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="object-cover w-full h-full opacity-20 filter grayscale contrast-125"
+            className="object-cover w-full h-full opacity-15 filter grayscale contrast-125"
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-skin-care-product-drops-41131-large.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-ivory via-brand-ivory/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-ivory/90 via-brand-ivory/80 to-brand-ivory" />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 py-20">
-          {/* Badge Animation */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-brand-grey-border shadow-subtle text-xs font-semibold uppercase tracking-wider text-brand-obsidian"
-          >
-            <Sparkles className="w-4 h-4 text-brand-rose animate-spin-slow" />
-            <span>2026 AI-Native Korean Skincare for UK Skin</span>
-          </motion.div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            
+            {/* Left Column: Headline & Action */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+              <motion.div
+                initial={{ opacity: 0, y: -15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-brand-grey-border shadow-subtle text-xs font-semibold uppercase tracking-wider text-brand-obsidian"
+              >
+                <Sparkles className="w-4 h-4 text-brand-rose animate-spin-slow" />
+                <span>2026 AI-Native Korean Skincare for UK Skin</span>
+              </motion.div>
 
-          {/* Headline Animation */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-obsidian leading-[1.08]"
-          >
-            K-BEAUTY,<br />
-            <span className="text-brand-rose font-normal italic">MATCHED TO YOU.</span>
-          </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="font-serif text-4xl sm:text-6xl lg:text-6xl font-bold tracking-tight text-brand-obsidian leading-[1.08]"
+              >
+                K-BEAUTY,<br />
+                <span className="text-brand-rose font-normal italic">MATCHED TO YOU.</span>
+              </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-sm sm:text-lg text-brand-charcoal-light max-w-2xl mx-auto font-normal leading-relaxed"
-          >
-            Discover clinically-inspired Korean skincare selected around your skin, your concerns, and your goals. Formulated in Seoul, intelligently matched for UK skin.
-          </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="text-sm sm:text-base text-brand-charcoal-light max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed"
+              >
+                Discover clinically-inspired Korean skincare selected around your skin, your concerns, and your goals. Formulated in Seoul, intelligently matched for UK skin types.
+              </motion.p>
 
-          {/* Dual CTAs with Motion Hover */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
-          >
-            <button
-              onClick={openSkinQuiz}
-              className="w-full sm:w-auto bg-brand-obsidian text-white py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-rose transition-smooth shadow-float group"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2"
+              >
+                <button
+                  onClick={openSkinQuiz}
+                  className="w-full sm:w-auto bg-brand-obsidian text-white py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-rose transition-smooth shadow-float group"
+                >
+                  <Sparkles className="w-4 h-4 text-brand-rose group-hover:rotate-12 transition-transform" />
+                  <span>Start My Skin Match</span>
+                </button>
+
+                <Link
+                  href="/shop?filter=new"
+                  className="w-full sm:w-auto bg-white border border-brand-grey-border text-brand-obsidian py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:border-brand-rose transition-smooth shadow-subtle group"
+                >
+                  <span>Shop New In</span>
+                  <ArrowRight className="w-4 h-4 text-brand-rose group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                className="pt-6 flex flex-wrap items-center justify-center lg:justify-start gap-5 text-xs text-brand-charcoal-light font-medium"
+              >
+                <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-700" /> Authentic Seoul Formulas</span>
+                <span className="flex items-center gap-1.5"><HeartHandshake className="w-4 h-4 text-brand-rose" /> Free UK Delivery &gt; £35</span>
+                <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-500 fill-amber-400" /> 4.9/5 from 12k Reviews</span>
+              </motion.div>
+            </div>
+
+            {/* Right Column: Promoted Beauty Model Video Showcase Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="lg:col-span-5 relative"
             >
-              <Sparkles className="w-4 h-4 text-brand-rose group-hover:rotate-12 transition-transform" />
-              <span>Start My Skin Match</span>
-            </button>
+              <div className="relative rounded-3xl overflow-hidden bg-brand-obsidian border-2 border-brand-grey-border shadow-float aspect-[4/5] max-w-md mx-auto group">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="object-cover w-full h-full opacity-90 group-hover:scale-105 transition-transform duration-700"
+                >
+                  <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-applying-face-cream-41130-large.mp4" type="video/mp4" />
+                </video>
 
-            <Link
-              href="/shop?filter=new"
-              className="w-full sm:w-auto bg-white border border-brand-grey-border text-brand-obsidian py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:border-brand-rose transition-smooth shadow-subtle group"
-            >
-              <span>Shop New In</span>
-              <ArrowRight className="w-4 h-4 text-brand-rose group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </motion.div>
+                {/* Live Badge Overlay */}
+                <div className="absolute top-4 left-4 flex items-center gap-2 bg-brand-obsidian/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-wider text-white">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                  <span>Routine Demo • 96% AI Match</span>
+                </div>
 
-          {/* Micro Trust Bar */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="pt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs text-brand-charcoal-light font-medium"
-          >
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-700" /> 100% Authentic Seoul Formulas</span>
-            <span className="flex items-center gap-1.5"><HeartHandshake className="w-4 h-4 text-brand-rose" /> Free UK Shipping Over £35</span>
-            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-500 fill-amber-400" /> 4.9/5 from 12,000+ UK Reviews</span>
-          </motion.div>
+                {/* Bottom Shoppable Card Overlay */}
+                <div className="absolute inset-x-4 bottom-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-brand-grey-border shadow-float space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] uppercase font-bold text-brand-rose tracking-wider">Featured Promotion</span>
+                    <span className="text-[11px] font-bold text-brand-obsidian">£15.50</span>
+                  </div>
+                  <h4 className="font-semibold text-xs text-brand-obsidian line-clamp-1">Relief Sun : Rice + Probiotics SPF50+</h4>
+                  <p className="text-[11px] text-brand-charcoal-light line-clamp-1">Viral lightweight organic SPF with 30% rice extract.</p>
+                  
+                  <button
+                    onClick={() => addToCart(PRODUCTS[0])}
+                    className="w-full bg-brand-obsidian text-white py-2 px-3 rounded-xl text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-1.5 hover:bg-brand-rose transition-colors"
+                  >
+                    <ShoppingBag className="w-3.5 h-3.5" />
+                    <span>Quick Add • £15.50</span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
