@@ -42,6 +42,29 @@ export default function HomePage() {
     '🌿 100% CRUELTY-FREE CERTIFIED BRANDS'
   ];
 
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <div className="space-y-16 md:space-y-24 pb-16 overflow-hidden">
       {/* SECTION 1 — HERO WITH PROMOTED BEAUTY MODEL VIDEO SHOWCASE */}
@@ -53,6 +76,7 @@ export default function HomePage() {
             loop
             muted
             playsInline
+            poster="/images/kbeauty_hero_editorial.jpg"
             className="object-cover w-full h-full opacity-15 filter grayscale contrast-125"
           >
             <source src="https://assets.mixkit.co/videos/preview/mixkit-skin-care-product-drops-41131-large.mp4" type="video/mp4" />
@@ -138,23 +162,50 @@ export default function HomePage() {
             >
               <div className="relative rounded-3xl overflow-hidden bg-brand-obsidian border-2 border-brand-grey-border shadow-float aspect-[4/5] max-w-md mx-auto group">
                 <video
+                  ref={videoRef}
                   autoPlay
                   loop
-                  muted
+                  muted={isMuted}
                   playsInline
-                  className="object-cover w-full h-full opacity-90 group-hover:scale-105 transition-transform duration-700"
+                  poster="/images/kbeauty_glass_skin_glow.jpg"
+                  className="object-cover w-full h-full opacity-95 group-hover:scale-105 transition-transform duration-700"
                 >
                   <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-applying-face-cream-41130-large.mp4" type="video/mp4" />
+                  {/* Fallback Image if video element is not supported */}
+                  <Image
+                    src="/images/kbeauty_glass_skin_glow.jpg"
+                    alt="Beauty Model Skincare Routine"
+                    fill
+                    className="object-cover"
+                  />
                 </video>
 
                 {/* Live Badge Overlay */}
-                <div className="absolute top-4 left-4 flex items-center gap-2 bg-brand-obsidian/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-wider text-white">
+                <div className="absolute top-4 left-4 flex items-center gap-2 bg-brand-obsidian/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-bold uppercase tracking-wider text-white z-20">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                   <span>Routine Demo • 96% AI Match</span>
                 </div>
 
+                {/* Video Play/Pause & Mute Interactive Controls */}
+                <div className="absolute top-4 right-4 flex items-center gap-2 z-20">
+                  <button
+                    onClick={togglePlay}
+                    className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center hover:bg-brand-rose transition-colors"
+                    aria-label="Toggle Video Playback"
+                  >
+                    {isPlaying ? <span className="w-2.5 h-2.5 bg-white rounded-xs" /> : <Play className="w-3.5 h-3.5 fill-white ml-0.5" />}
+                  </button>
+                  <button
+                    onClick={toggleMute}
+                    className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center hover:bg-brand-rose transition-colors"
+                    aria-label="Toggle Video Audio"
+                  >
+                    {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
+
                 {/* Bottom Shoppable Card Overlay */}
-                <div className="absolute inset-x-4 bottom-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-brand-grey-border shadow-float space-y-2">
+                <div className="absolute inset-x-4 bottom-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-brand-grey-border shadow-float space-y-2 z-20">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] uppercase font-bold text-brand-rose tracking-wider">Featured Promotion</span>
                     <span className="text-[11px] font-bold text-brand-obsidian">£15.50</span>
