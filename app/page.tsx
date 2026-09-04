@@ -3,11 +3,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { useShop } from '@/context/ShopContext';
 import { PRODUCTS, BRANDS } from '@/data/products';
 import { CONCERNS } from '@/data/concerns';
 import ProductCard from '@/components/product/ProductCard';
-import { Sparkles, ArrowRight, CheckCircle2, Star, ShieldCheck, HeartHandshake, Layers, Plus, Check } from 'lucide-react';
+import { Sparkles, ArrowRight, Star, ShieldCheck, HeartHandshake, Plus, Check, Play, Zap, RefreshCw } from 'lucide-react';
 
 export default function HomePage() {
   const { openSkinQuiz, openAISearch, addToCart } = useShop();
@@ -31,62 +32,115 @@ export default function HomePage() {
     setTimeout(() => setRoutineAdded(false), 2000);
   };
 
+  const tickerItems = [
+    '🔥 TIKTOK VIRAL K-BEAUTY DROPS',
+    '✨ 96% AI SKIN MATCH ACCURACY',
+    '🎁 FREE DELUXE SAMPLES WITH EVERY ORDER',
+    '⚡ UK EXPRESS 24H DISPATCH AVAILABLE',
+    '🛡️ 100% AUTHENTIC SEOUL FORMULATIONS',
+    '🇬🇧 UK VAT & TAXES INCLUDED IN PRICES',
+    '🌿 100% CRUELTY-FREE CERTIFIED BRANDS'
+  ];
+
   return (
-    <div className="space-y-16 md:space-y-24 pb-16">
-      {/* SECTION 1 — HERO */}
-      <section className="relative min-h-[85vh] flex items-center justify-center bg-brand-ivory overflow-hidden border-b border-brand-grey-border">
-        {/* Background Editorial Visuals */}
-        <div className="absolute inset-0 z-0 opacity-15">
-          <Image
-            src="https://images.unsplash.com/photo-1608248597263-00079e96048a?q=80&w=1600&auto=format&fit=crop"
-            alt="Korean Skincare Editorial"
-            fill
-            priority
-            className="object-cover object-center filter grayscale"
-          />
+    <div className="space-y-16 md:space-y-24 pb-16 overflow-hidden">
+      {/* SECTION 1 — HERO WITH AMBIENT VIDEO & EDITORIAL LAYERING */}
+      <section className="relative min-h-[90vh] flex items-center justify-center bg-brand-ivory border-b border-brand-grey-border">
+        {/* Background Video Loop & Editorial Overlay */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="object-cover w-full h-full opacity-20 filter grayscale contrast-125"
+          >
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-skin-care-product-drops-41131-large.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-ivory via-brand-ivory/80 to-transparent" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 py-16">
-          <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-brand-grey-border shadow-subtle text-xs font-semibold uppercase tracking-wider text-brand-obsidian">
-            <Sparkles className="w-3.5 h-3.5 text-brand-rose animate-spin-slow" />
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 py-20">
+          {/* Badge Animation */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-brand-grey-border shadow-subtle text-xs font-semibold uppercase tracking-wider text-brand-obsidian"
+          >
+            <Sparkles className="w-4 h-4 text-brand-rose animate-spin-slow" />
             <span>2026 AI-Native Korean Skincare for UK Skin</span>
-          </div>
+          </motion.div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-obsidian leading-[1.1]">
+          {/* Headline Animation */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-brand-obsidian leading-[1.08]"
+          >
             K-BEAUTY,<br />
             <span className="text-brand-rose font-normal italic">MATCHED TO YOU.</span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-sm sm:text-lg text-brand-charcoal-light max-w-2xl mx-auto font-normal leading-relaxed">
-            Discover clinically-inspired Korean skincare selected around your skin, your concerns, and your goals. Formulated in Seoul, intelligently recommended for you.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-sm sm:text-lg text-brand-charcoal-light max-w-2xl mx-auto font-normal leading-relaxed"
+          >
+            Discover clinically-inspired Korean skincare selected around your skin, your concerns, and your goals. Formulated in Seoul, intelligently matched for UK skin.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          {/* Dual CTAs with Motion Hover */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+          >
             <button
               onClick={openSkinQuiz}
-              className="w-full sm:w-auto bg-brand-obsidian text-white py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-rose transition-smooth shadow-float"
+              className="w-full sm:w-auto bg-brand-obsidian text-white py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-rose transition-smooth shadow-float group"
             >
-              <Sparkles className="w-4 h-4 text-brand-rose" />
+              <Sparkles className="w-4 h-4 text-brand-rose group-hover:rotate-12 transition-transform" />
               <span>Start My Skin Match</span>
             </button>
 
             <Link
               href="/shop?filter=new"
-              className="w-full sm:w-auto bg-white border border-brand-grey-border text-brand-obsidian py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:border-brand-rose transition-smooth shadow-subtle"
+              className="w-full sm:w-auto bg-white border border-brand-grey-border text-brand-obsidian py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:border-brand-rose transition-smooth shadow-subtle group"
             >
               <span>Shop New In</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 text-brand-rose group-hover:translate-x-1 transition-transform" />
             </Link>
-          </div>
+          </motion.div>
 
           {/* Micro Trust Bar */}
-          <div className="pt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs text-brand-charcoal-light font-medium">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="pt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-12 text-xs text-brand-charcoal-light font-medium"
+          >
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-700" /> 100% Authentic Seoul Formulas</span>
             <span className="flex items-center gap-1.5"><HeartHandshake className="w-4 h-4 text-brand-rose" /> Free UK Shipping Over £35</span>
             <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-500 fill-amber-400" /> 4.9/5 from 12,000+ UK Reviews</span>
-          </div>
+          </motion.div>
         </div>
       </section>
+
+      {/* INFINITE MOTION SCROLLING MARQUEE AD BANNER */}
+      <div className="bg-brand-obsidian text-white py-3.5 border-y border-brand-charcoal-light/30 overflow-hidden relative shadow-subtle">
+        <div className="flex w-max animate-marquee space-x-12 text-xs uppercase tracking-widest font-semibold text-brand-blush">
+          {[...tickerItems, ...tickerItems].map((item, idx) => (
+            <div key={idx} className="flex items-center gap-3 shrink-0">
+              <span>{item}</span>
+              <span className="text-brand-rose opacity-60">•</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* SECTION 2 — QUICK SKIN DISCOVERY */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,35 +158,40 @@ export default function HomePage() {
           </button>
         </div>
 
-        {/* Interactive Categories Horizontal Pills */}
+        {/* Interactive Categories Horizontal Pills with Motion */}
         <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
-          {Object.values(CONCERNS).map((concern) => (
-            <Link
+          {Object.values(CONCERNS).map((concern, index) => (
+            <motion.div
               key={concern.slug}
-              href={`/concerns/${concern.slug}`}
-              className="group bg-white p-5 rounded-2xl border border-brand-grey-border min-w-[200px] hover:border-brand-rose hover:shadow-card transition-smooth flex flex-col justify-between"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
             >
-              <div>
-                <span className="text-[10px] uppercase font-bold text-brand-rose tracking-wider">{concern.tagline}</span>
-                <h3 className="font-serif text-lg font-bold text-brand-obsidian group-hover:text-brand-rose transition-colors mt-1">
-                  {concern.title}
-                </h3>
-              </div>
-              <div className="pt-4 flex items-center justify-between text-xs text-brand-charcoal-light border-t border-brand-grey-border/60 mt-4">
-                <span>{concern.productIds.length} Products</span>
-                <ArrowRight className="w-4 h-4 text-brand-rose group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
+              <Link
+                href={`/concerns/${concern.slug}`}
+                className="group bg-white p-5 rounded-2xl border border-brand-grey-border min-w-[210px] hover:border-brand-rose hover:shadow-card transition-smooth flex flex-col justify-between block h-full"
+              >
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-brand-rose tracking-wider">{concern.tagline}</span>
+                  <h3 className="font-serif text-lg font-bold text-brand-obsidian group-hover:text-brand-rose transition-colors mt-1">
+                    {concern.title}
+                  </h3>
+                </div>
+                <div className="pt-4 flex items-center justify-between text-xs text-brand-charcoal-light border-t border-brand-grey-border/60 mt-4">
+                  <span>{concern.productIds.length} Products</span>
+                  <ArrowRight className="w-4 h-4 text-brand-rose group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      {/* SECTION 3 — AI SKIN MATCH HERO SECTION */}
+      {/* SECTION 3 — AI SKIN MATCH HERO FEATURE WITH GENERATED EDITORIAL PHOTO */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-brand-blush/80 via-brand-ivory to-white rounded-3xl border border-brand-blush-border p-8 md:p-14 shadow-card grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="space-y-6">
             <span className="inline-flex items-center gap-1.5 bg-white px-3 py-1 rounded-full text-xs font-semibold uppercase text-brand-rose border border-brand-rose/30 shadow-subtle">
-              <Sparkles className="w-3.5 h-3.5 text-brand-rose" /> Signature Feature
+              <Sparkles className="w-3.5 h-3.5 text-brand-rose" /> Signature AI Feature
             </span>
             <h2 className="font-serif text-3xl md:text-5xl font-bold text-brand-obsidian leading-tight">
               Meet your AI skincare match.
@@ -169,38 +228,20 @@ export default function HomePage() {
             </button>
           </div>
 
-          {/* AI Interface Preview Mockup */}
-          <div className="bg-white rounded-2xl p-6 border border-brand-grey-border shadow-float space-y-4">
-            <div className="flex items-center justify-between border-b border-brand-grey-border pb-4">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-brand-rose text-white flex items-center justify-center font-bold text-xs">
-                  AI
-                </div>
-                <div>
-                  <h4 className="font-semibold text-xs text-brand-obsidian">Your Diagnostic Result</h4>
-                  <span className="text-[10px] text-emerald-700 font-bold">96% COMPATIBILITY SCORE</span>
-                </div>
+          {/* Real Generated Editorial Photography Container */}
+          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-float border border-brand-grey-border">
+            <Image
+              src="/images/kbeauty_hero_editorial.jpg"
+              alt="Luxury Korean Skincare Formulations"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian/80 via-transparent to-transparent flex items-end p-6">
+              <div className="text-white space-y-1">
+                <span className="text-[10px] uppercase font-bold text-brand-rose tracking-wider">Seoul Editorial Edit</span>
+                <h4 className="font-serif text-lg font-bold">Intelligent Botanical Nutrition</h4>
+                <p className="text-xs text-white/80">Clinically matched for UK moisture barrier recovery.</p>
               </div>
-              <span className="badge-editorial bg-brand-grey text-brand-charcoal">Verified Formula</span>
-            </div>
-
-            <div className="space-y-2 text-xs">
-              <div className="bg-brand-ivory p-3 rounded-lg border border-brand-grey-border flex items-center justify-between">
-                <span>AM Step 1: Low-pH Cleanser</span>
-                <strong className="text-brand-obsidian">Round Lab Dokdo</strong>
-              </div>
-              <div className="bg-brand-ivory p-3 rounded-lg border border-brand-grey-border flex items-center justify-between">
-                <span>AM Step 2: Soothing Essence</span>
-                <strong className="text-brand-obsidian">COSRX Snail 96</strong>
-              </div>
-              <div className="bg-brand-ivory p-3 rounded-lg border border-brand-grey-border flex items-center justify-between">
-                <span>AM Step 3: Sun Protection</span>
-                <strong className="text-brand-obsidian">Beauty of Joseon SPF</strong>
-              </div>
-            </div>
-
-            <div className="p-3 bg-brand-blush/60 rounded-lg text-[11px] text-brand-charcoal text-center">
-              ✓ Formulated for dry sensitive barriers • Free UK delivery eligible
             </div>
           </div>
         </div>
@@ -222,7 +263,6 @@ export default function HomePage() {
           </Link>
         </div>
 
-        {/* Carousel Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {PRODUCTS.slice(0, 4).map(product => (
             <ProductCard key={product.id} product={product} />
@@ -373,7 +413,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 8 — FEATURED BRANDS */}
+      {/* SECTION 8 — GLASS SKIN LIFESTYLE SHOWCASE */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl overflow-hidden bg-brand-obsidian text-white p-8 md:p-14 min-h-[400px] flex items-center shadow-float">
+          <Image
+            src="/images/kbeauty_glass_skin_glow.jpg"
+            alt="Glass Skin Glow Lifestyle"
+            fill
+            className="object-cover opacity-35"
+          />
+          <div className="relative z-10 space-y-4 max-w-xl">
+            <span className="badge-editorial bg-brand-rose text-white">The Seoul Glow Standard</span>
+            <h2 className="font-serif text-3xl md:text-5xl font-bold">Glass Skin, Simplified.</h2>
+            <p className="text-xs md:text-sm text-white/80 leading-relaxed">
+              Achieve deep, luminous hydration without clogging pores or causing flushing. Intelligently matched to your skin profile.
+            </p>
+            <button
+              onClick={openSkinQuiz}
+              className="bg-white text-brand-obsidian text-xs font-semibold uppercase tracking-wider px-6 py-3 rounded-full hover:bg-brand-rose hover:text-white transition-colors"
+            >
+              Get Glass Skin Routine →
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9 — FEATURED BRANDS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-10">
           <span className="badge-editorial bg-brand-grey text-brand-charcoal">Seoul Authenticity</span>
