@@ -12,7 +12,7 @@ export const PRODUCTS: Product[] = [
     compareAtPrice: 18.00,
     currency: 'GBP',
     images: [
-      'https://images.unsplash.com/photo-1608248597263-00079e96048a?q=80&w=800&auto=format&fit=crop',
+      '/images/boj_relief_sun.jpg',
       'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=800&auto=format&fit=crop',
     ],
     category: 'spf',
@@ -140,7 +140,7 @@ export const PRODUCTS: Product[] = [
     compareAtPrice: 24.00,
     currency: 'GBP',
     images: [
-      'https://images.unsplash.com/photo-1608248597263-00079e96048a?q=80&w=800&auto=format&fit=crop',
+      '/images/anua_heartleaf_toner.jpg',
       'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop',
     ],
     category: 'toner',
