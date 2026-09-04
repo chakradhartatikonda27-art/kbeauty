@@ -665,33 +665,104 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 9 — FEATURED BRANDS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-xl mx-auto mb-10">
-          <span className="badge-editorial bg-brand-grey text-brand-charcoal">Seoul Authenticity</span>
-          <h2 className="font-serif text-3xl font-bold text-brand-obsidian">Featured Brands</h2>
+      {/* SECTION 9 — ROTATABLE BRAND LOGOS TICKER & FEATURED BRANDS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div className="text-center max-w-xl mx-auto space-y-2">
+          <span className="badge-editorial bg-brand-rose text-white">Seoul Authenticity Guaranteed</span>
+          <h2 className="font-serif text-3xl md:text-4xl font-bold text-brand-obsidian">
+            Official Partner K-Beauty Brands
+          </h2>
+          <p className="text-xs text-brand-charcoal-light">Sourced 100% direct from certified Seoul beauty laboratories.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* ROTATABLE LEFT-TO-RIGHT INFINITE BRAND LOGO MARQUEE */}
+        <div className="bg-brand-obsidian text-white py-6 rounded-3xl border border-brand-grey-border shadow-float overflow-hidden relative group">
+          <div className="flex w-max animate-marquee space-x-8 text-xs font-semibold">
+            {[
+              { name: 'Beauty of Joseon', slug: 'beauty-of-joseon', icon: '🌿', tagline: 'Hanbang Science' },
+              { name: 'COSRX', slug: 'cosrx', icon: '🐌', tagline: 'Minimalist Active' },
+              { name: 'Anua', slug: 'anua', icon: '🍃', tagline: '77% Heartleaf' },
+              { name: 'SKIN1004', slug: 'skin1004', icon: '🌾', tagline: 'Madagascar Centella' },
+              { name: 'Round Lab', slug: 'round-lab', icon: '💧', tagline: 'Birch Juice SPF' },
+              { name: 'Laneige', slug: 'laneige', icon: '🍓', tagline: 'Berry Lip Care' },
+              { name: 'AXIS-Y', slug: 'axis-y', icon: '✨', tagline: '5% Niacinamide' },
+              { name: 'Haruharu', slug: 'haruharu', icon: '🌾', tagline: 'Black Rice Ferment' },
+              { name: 'Medicube', slug: 'medicube', icon: '🎯', tagline: 'Zero Pore Care' },
+              { name: 'Torriden', slug: 'torriden', icon: '💦', tagline: 'Dive-In Hydration' },
+              // Duplicate for infinite seamless scrolling loop
+              { name: 'Beauty of Joseon', slug: 'beauty-of-joseon', icon: '🌿', tagline: 'Hanbang Science' },
+              { name: 'COSRX', slug: 'cosrx', icon: '🐌', tagline: 'Minimalist Active' },
+              { name: 'Anua', slug: 'anua', icon: '🍃', tagline: '77% Heartleaf' },
+              { name: 'SKIN1004', slug: 'skin1004', icon: '🌾', tagline: 'Madagascar Centella' },
+              { name: 'Round Lab', slug: 'round-lab', icon: '💧', tagline: 'Birch Juice SPF' },
+              { name: 'Laneige', slug: 'laneige', icon: '🍓', tagline: 'Berry Lip Care' },
+              { name: 'AXIS-Y', slug: 'axis-y', icon: '✨', tagline: '5% Niacinamide' },
+              { name: 'Haruharu', slug: 'haruharu', icon: '🌾', tagline: 'Black Rice Ferment' },
+            ].map((brand, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.08, y: -2 }}
+                className="shrink-0"
+              >
+                <Link
+                  href={`/brands/${brand.slug}`}
+                  className="flex items-center gap-3 bg-white/10 hover:bg-brand-rose px-5 py-3 rounded-2xl border border-white/20 transition-all shadow-subtle group/brand"
+                >
+                  <span className="text-lg">{brand.icon}</span>
+                  <div>
+                    <span className="font-serif font-bold text-sm text-white group-hover/brand:text-white block line-clamp-1">
+                      {brand.name}
+                    </span>
+                    <span className="text-[9px] uppercase tracking-wider text-brand-blush group-hover/brand:text-white/80 block">
+                      {brand.tagline}
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Featured Brands Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pt-4">
           {BRANDS.map(brand => (
-            <Link
+            <motion.div
               key={brand.slug}
-              href={`/brands/${brand.slug}`}
-              className="group bg-white rounded-2xl border border-brand-grey-border overflow-hidden hover:shadow-card transition-smooth"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.3 }}
             >
-              <div className="relative h-40 bg-brand-ivory">
-                <Image src={brand.heroImage} alt={brand.name} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-              <div className="p-5 space-y-2">
-                <span className="text-[10px] font-bold uppercase text-brand-rose">{brand.origin}</span>
-                <h3 className="font-serif text-xl font-bold text-brand-obsidian group-hover:text-brand-rose transition-colors">
-                  {brand.name}
-                </h3>
-                <p className="text-xs text-brand-charcoal-light line-clamp-2 leading-relaxed">
-                  {brand.description}
-                </p>
-              </div>
-            </Link>
+              <Link
+                href={`/brands/${brand.slug}`}
+                className="group bg-white rounded-2xl border border-brand-grey-border overflow-hidden hover:shadow-card transition-smooth block h-full flex flex-col justify-between"
+              >
+                <div className="relative h-44 bg-brand-ivory overflow-hidden">
+                  <Image
+                    src={brand.heroImage}
+                    alt={brand.name}
+                    fill
+                    className="object-cover group-hover:scale-108 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-obsidian/80 via-transparent to-transparent" />
+                  <span className="absolute top-3 left-3 text-[9px] font-bold uppercase tracking-wider bg-white/90 text-brand-rose px-2.5 py-1 rounded-full border border-brand-rose/20 backdrop-blur-md">
+                    {brand.origin}
+                  </span>
+                </div>
+                <div className="p-5 space-y-2 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-serif text-xl font-bold text-brand-obsidian group-hover:text-brand-rose transition-colors">
+                      {brand.name}
+                    </h3>
+                    <p className="text-xs text-brand-charcoal-light line-clamp-2 leading-relaxed mt-1">
+                      {brand.description}
+                    </p>
+                  </div>
+                  <div className="pt-3 border-t border-brand-grey-border/60 flex items-center justify-between text-xs font-semibold uppercase text-brand-rose group-hover:text-brand-obsidian">
+                    <span>Explore Lineup</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </section>
