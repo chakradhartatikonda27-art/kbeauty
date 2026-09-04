@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useShop } from '@/context/ShopContext';
-import { Search, ShoppingBag, Heart, User, Sparkles, ChevronDown, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Heart, User, Sparkles, ChevronDown, Menu, X, Home } from 'lucide-react';
 
 export default function Header() {
   const {
@@ -117,6 +117,10 @@ export default function Header() {
       <nav className="hidden lg:block border-t border-brand-grey-border/40 bg-brand-ivory">
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-xs font-medium uppercase tracking-wider">
           <div className="flex items-center gap-7 py-3">
+            <Link href="/" className="hover:text-brand-rose transition-colors py-1 flex items-center gap-1 font-bold text-brand-obsidian">
+              <Home className="w-3.5 h-3.5 text-brand-rose" /> Home
+            </Link>
+
             <Link href="/shop" className="hover:text-brand-rose transition-colors py-1">
               Shop All
             </Link>
@@ -304,6 +308,9 @@ export default function Header() {
             <span>Take AI Skin Quiz</span>
           </button>
           <div className="space-y-2 font-medium text-sm">
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 py-2 border-b border-brand-grey-border font-bold text-brand-rose">
+              <Home className="w-4 h-4 text-brand-rose" /> Home
+            </Link>
             <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 border-b border-brand-grey-border">Shop All Products</Link>
             <Link href="/concerns/acne" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 border-b border-brand-grey-border">Shop by Concern</Link>
             <Link href="/ingredients" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 border-b border-brand-grey-border">Ingredients Guide</Link>
