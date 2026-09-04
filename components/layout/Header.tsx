@@ -31,32 +31,32 @@ export default function Header() {
       </div>
 
       {/* Main Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between gap-3">
         {/* Left: Mobile Toggle & Brand Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden text-brand-charcoal p-1 hover:text-brand-rose transition-colors"
+            className="lg:hidden text-brand-charcoal p-2 hover:text-brand-rose transition-colors touch-target flex items-center justify-center"
             aria-label="Toggle Navigation Menu"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
 
           <Link href="/" className="group flex flex-col">
-            <span className="font-serif text-2xl md:text-3xl font-bold tracking-tight text-brand-obsidian group-hover:text-brand-rose transition-colors">
+            <span className="font-serif text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-brand-obsidian group-hover:text-brand-rose transition-colors">
               SEOUL LABS
             </span>
-            <span className="text-[9px] tracking-[0.25em] uppercase text-brand-charcoal-light/70 font-semibold -mt-1">
+            <span className="text-[8px] sm:text-[9px] tracking-[0.25em] uppercase text-brand-charcoal-light/70 font-semibold -mt-1">
               UNITED KINGDOM
             </span>
           </Link>
         </div>
 
         {/* Center: Intelligent AI Search Trigger */}
-        <div className="hidden md:flex flex-1 max-w-lg mx-6">
+        <div className="hidden md:flex flex-1 max-w-lg mx-4 lg:mx-6">
           <button
             onClick={openAISearch}
-            className="w-full bg-white border border-brand-grey-border rounded-full py-2.5 px-4 text-left text-sm text-brand-charcoal-light flex items-center justify-between hover:border-brand-rose/60 transition-smooth shadow-subtle group"
+            className="w-full bg-white border border-brand-grey-border rounded-full py-2.5 px-4 text-left text-sm text-brand-charcoal-light flex items-center justify-between hover:border-brand-rose/60 transition-smooth shadow-subtle group touch-target"
           >
             <div className="flex items-center gap-2.5">
               <Search className="w-4 h-4 text-brand-rose group-hover:scale-110 transition-transform" />
@@ -69,10 +69,10 @@ export default function Header() {
         </div>
 
         {/* Right: Actions (Account, Wishlist, Cart) */}
-        <div className="flex items-center gap-3 md:gap-5">
+        <div className="flex items-center gap-2 sm:gap-3 md:gap-5">
           <button
             onClick={openAISearch}
-            className="md:hidden text-brand-charcoal p-1 hover:text-brand-rose transition-colors"
+            className="md:hidden text-brand-charcoal p-2 hover:text-brand-rose transition-colors touch-target flex items-center justify-center"
             aria-label="Open AI Search"
           >
             <Search className="w-5 h-5" />
@@ -80,7 +80,7 @@ export default function Header() {
 
           <Link
             href="/account"
-            className="hidden sm:flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-brand-charcoal hover:text-brand-rose transition-colors p-1"
+            className="hidden sm:flex items-center gap-1.5 text-xs uppercase tracking-wider font-semibold text-brand-charcoal hover:text-brand-rose transition-colors p-1.5 min-h-[44px]"
           >
             <User className="w-5 h-5 stroke-[1.5]" />
             <span className="hidden xl:inline">Account</span>
@@ -88,11 +88,11 @@ export default function Header() {
 
           <Link
             href="/account?tab=wishlist"
-            className="flex items-center gap-1 text-xs uppercase tracking-wider font-semibold text-brand-charcoal hover:text-brand-rose transition-colors p-1 relative"
+            className="flex items-center gap-1 text-xs uppercase tracking-wider font-semibold text-brand-charcoal hover:text-brand-rose transition-colors p-1.5 relative min-h-[44px]"
           >
             <Heart className="w-5 h-5 stroke-[1.5]" />
             {wishlist.length > 0 && (
-              <span className="absolute -top-1 -right-1 bg-brand-rose text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+              <span className="absolute top-0 right-0 bg-brand-rose text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
                 {wishlist.length}
               </span>
             )}
@@ -102,10 +102,10 @@ export default function Header() {
           {/* Bag Drawer Trigger */}
           <button
             onClick={openCart}
-            className="flex items-center gap-2 bg-brand-obsidian text-white px-3.5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-brand-charcoal transition-smooth shadow-sm"
+            className="flex items-center gap-2 bg-brand-obsidian text-white px-3.5 py-2 rounded-full text-xs font-semibold uppercase tracking-wider hover:bg-brand-charcoal transition-smooth shadow-sm min-h-[40px] touch-target"
           >
             <ShoppingBag className="w-4 h-4 stroke-[2]" />
-            <span>Bag</span>
+            <span className="hidden xs:inline">Bag</span>
             <span className="bg-brand-rose text-white text-[10px] px-1.5 py-0.5 rounded-full font-bold">
               {cartItemCount}
             </span>
@@ -297,25 +297,43 @@ export default function Header() {
         )}
       </nav>
 
-      {/* Mobile Menu Sheet */}
+      {/* Mobile Menu Drawer Sheet (Touch-optimized slide-over) */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[110px] bg-brand-ivory border-b border-brand-grey-border shadow-float p-6 z-50 space-y-4">
-          <button
-            onClick={() => { openSkinQuiz(); setIsMobileMenuOpen(false); }}
-            className="w-full bg-gradient-to-r from-brand-blush to-brand-grey text-brand-obsidian py-3 px-4 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 border border-brand-rose/40"
-          >
-            <Sparkles className="w-4 h-4 text-brand-rose" />
-            <span>Take AI Skin Quiz</span>
-          </button>
-          <div className="space-y-2 font-medium text-sm">
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 py-2 border-b border-brand-grey-border font-bold text-brand-rose">
-              <Home className="w-4 h-4 text-brand-rose" /> Home
-            </Link>
-            <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 border-b border-brand-grey-border">Shop All Products</Link>
-            <Link href="/concerns/acne" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 border-b border-brand-grey-border">Shop by Concern</Link>
-            <Link href="/ingredients" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 border-b border-brand-grey-border">Ingredients Guide</Link>
-            <Link href="/journal" onClick={() => setIsMobileMenuOpen(false)} className="block py-2 border-b border-brand-grey-border">K-Beauty Journal</Link>
-            <Link href="/account" onClick={() => setIsMobileMenuOpen(false)} className="block py-2">My Account & Routine</Link>
+        <div className="lg:hidden fixed inset-x-0 top-[105px] bottom-0 bg-brand-ivory/98 backdrop-blur-xl z-50 overflow-y-auto p-6 pb-24 shadow-2xl animate-fade-in border-b border-brand-grey-border">
+          <div className="space-y-6 max-w-md mx-auto">
+            {/* Quick Search Button */}
+            <button
+              onClick={() => { openAISearch(); setIsMobileMenuOpen(false); }}
+              className="w-full bg-white border border-brand-grey-border rounded-full py-3 px-4 text-left text-sm text-brand-charcoal flex items-center justify-between shadow-subtle"
+            >
+              <div className="flex items-center gap-2.5">
+                <Search className="w-4 h-4 text-brand-rose" />
+                <span className="text-xs font-medium">Search products, concerns...</span>
+              </div>
+              <span className="text-[10px] bg-brand-rose text-white px-2 py-0.5 rounded-full font-bold uppercase">AI Search</span>
+            </button>
+
+            {/* Skin Quiz CTA */}
+            <button
+              onClick={() => { openSkinQuiz(); setIsMobileMenuOpen(false); }}
+              className="w-full bg-gradient-to-r from-brand-blush to-brand-grey text-brand-obsidian py-3.5 px-4 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 border border-brand-rose/40 shadow-subtle"
+            >
+              <Sparkles className="w-4 h-4 text-brand-rose animate-spin-slow" />
+              <span>Take AI Skin Match Quiz</span>
+            </button>
+
+            {/* Nav Links */}
+            <div className="space-y-1 font-semibold text-sm divide-y divide-brand-grey-border/60">
+              <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2.5 py-3 font-bold text-brand-obsidian active:text-brand-rose">
+                <Home className="w-4 h-4 text-brand-rose" /> Home
+              </Link>
+              <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 text-brand-charcoal active:text-brand-rose">Shop All Products</Link>
+              <Link href="/shop?filter=bestseller" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 text-brand-charcoal active:text-brand-rose">Bestsellers</Link>
+              <Link href="/concerns/acne" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 text-brand-charcoal active:text-brand-rose">Shop by Skin Concern</Link>
+              <Link href="/ingredients" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 text-brand-charcoal active:text-brand-rose">Ingredients Guide</Link>
+              <Link href="/journal" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 text-brand-charcoal active:text-brand-rose">K-Beauty Journal</Link>
+              <Link href="/account" onClick={() => setIsMobileMenuOpen(false)} className="block py-3 text-brand-charcoal active:text-brand-rose">My Account & Routine</Link>
+            </div>
           </div>
         </div>
       )}

@@ -9,12 +9,44 @@
   --font-serif: 'Playfair Display', serif;
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  touch-action: manipulation;
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #FBF9F5;
   color: #1C1C1E;
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Touch-Friendly Tap Targets (iOS & Android Human Interface Guidelines) */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Smooth Touch Momentum Scrolling */
+.scroll-touch {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+.scroll-snap-item {
+  scroll-snap-align: start;
+}
+
+/* iOS Safe Area Padding Support */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
 /* Custom Scrollbar */
@@ -70,8 +102,12 @@ body {
 }
 
 .animate-marquee {
+  display: flex !important;
+  white-space: nowrap !important;
   animation: marquee 25s linear infinite;
+  will-change: transform;
 }
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+

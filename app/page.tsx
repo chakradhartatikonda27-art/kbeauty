@@ -68,7 +68,7 @@ export default function HomePage() {
   return (
     <div className="space-y-16 md:space-y-24 pb-16 overflow-hidden">
       {/* SECTION 1 — CLEAN EDITORIAL HERO */}
-      <section className="relative min-h-[75vh] flex items-center justify-center bg-brand-ivory border-b border-brand-grey-border py-16 md:py-24">
+      <section className="relative min-h-[65vh] sm:min-h-[75vh] flex items-center justify-center bg-brand-ivory border-b border-brand-grey-border py-10 sm:py-16 md:py-24">
         {/* Background Subtle Ambient Texture */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <Image
@@ -81,14 +81,14 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-brand-ivory/95 via-brand-ivory/90 to-brand-ivory" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5 sm:space-y-8">
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-4 py-2 rounded-full border border-brand-grey-border shadow-subtle text-xs font-semibold uppercase tracking-wider text-brand-obsidian"
+            className="inline-flex items-center gap-2 bg-white/95 backdrop-blur-md px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full border border-brand-grey-border shadow-subtle text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-brand-obsidian"
           >
-            <Sparkles className="w-4 h-4 text-brand-rose animate-spin-slow" />
+            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-rose animate-spin-slow" />
             <span>2026 AI-Native Korean Skincare for UK Skin</span>
           </motion.div>
 
@@ -96,7 +96,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-serif text-5xl sm:text-7xl lg:text-7xl font-bold tracking-tight text-brand-obsidian leading-[1.05]"
+            className="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-brand-obsidian leading-[1.08]"
           >
             K-BEAUTY,<br />
             <span className="text-brand-rose font-normal italic">MATCHED TO YOU.</span>
@@ -106,7 +106,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-base sm:text-lg text-brand-charcoal-light max-w-2xl mx-auto font-normal leading-relaxed"
+            className="text-sm sm:text-base md:text-lg text-brand-charcoal-light max-w-2xl mx-auto font-normal leading-relaxed px-2"
           >
             Discover clinically-inspired Korean skincare selected around your skin, your concerns, and your goals. Formulated in Seoul, intelligently matched for UK skin.
           </motion.p>
@@ -115,11 +115,11 @@ export default function HomePage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2"
           >
             <button
               onClick={openSkinQuiz}
-              className="w-full sm:w-auto bg-brand-obsidian text-white py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-rose transition-smooth shadow-float group"
+              className="w-full sm:w-auto bg-brand-obsidian text-white py-3.5 sm:py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-brand-rose transition-smooth shadow-float group touch-target"
             >
               <Sparkles className="w-4 h-4 text-brand-rose group-hover:rotate-12 transition-transform" />
               <span>Start My Skin Match</span>
@@ -127,7 +127,7 @@ export default function HomePage() {
 
             <Link
               href="/shop?filter=new"
-              className="w-full sm:w-auto bg-white border border-brand-grey-border text-brand-obsidian py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:border-brand-rose transition-smooth shadow-subtle group"
+              className="w-full sm:w-auto bg-white border border-brand-grey-border text-brand-obsidian py-3.5 sm:py-4 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 hover:border-brand-rose transition-smooth shadow-subtle group touch-target"
             >
               <span>Shop New In</span>
               <ArrowRight className="w-4 h-4 text-brand-rose group-hover:translate-x-1 transition-transform" />
@@ -138,11 +138,11 @@ export default function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.8 }}
-            className="pt-8 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs text-brand-charcoal-light font-medium border-t border-brand-grey-border/40 max-w-xl mx-auto"
+            className="pt-6 sm:pt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-brand-charcoal-light font-medium border-t border-brand-grey-border/40 max-w-xl mx-auto"
           >
-            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-700" /> 100% Authentic Seoul Formulas</span>
-            <span className="flex items-center gap-1.5"><HeartHandshake className="w-4 h-4 text-brand-rose" /> Free UK Shipping Over £35</span>
-            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-500 fill-amber-400" /> 4.9/5 from 12,000+ UK Reviews</span>
+            <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-700 shrink-0" /> 100% Authentic Seoul Formulas</span>
+            <span className="flex items-center gap-1.5"><HeartHandshake className="w-4 h-4 text-brand-rose shrink-0" /> Free UK Shipping Over £35</span>
+            <span className="flex items-center gap-1.5"><Star className="w-4 h-4 text-amber-500 fill-amber-400 shrink-0" /> 4.9/5 from 12,000+ UK Reviews</span>
           </motion.div>
         </div>
       </section>
@@ -529,16 +529,16 @@ export default function HomePage() {
 
       {/* SECTION 6 — BESTSELLERS CAROUSEL */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-8 border-b border-brand-grey-border pb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 border-b border-brand-grey-border pb-4">
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-brand-obsidian">
             UK Bestsellers
           </h2>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0">
             {['all', 'dryness', 'acne', 'pigmentation'].map((c) => (
               <button
                 key={c}
                 onClick={() => setActiveConcernFilter(c)}
-                className={`text-xs font-semibold uppercase px-3 py-1.5 rounded-full transition-colors ${
+                className={`text-[11px] sm:text-xs font-semibold uppercase px-3 py-1.5 rounded-full transition-colors whitespace-nowrap touch-target flex items-center justify-center ${
                   activeConcernFilter === c
                     ? 'bg-brand-obsidian text-white'
                     : 'bg-brand-grey text-brand-charcoal hover:bg-brand-blush'
@@ -592,12 +592,12 @@ export default function HomePage() {
           </div>
 
           {/* Routine Steps List */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
             {currentRoutine.map((product, idx) => (
-              <div key={product.id} className="bg-brand-ivory p-4 rounded-xl border border-brand-grey-border flex flex-col justify-between space-y-3">
-                <div className="flex items-center justify-between text-[11px] font-bold text-brand-rose border-b border-brand-grey-border pb-2">
+              <div key={product.id} className="bg-brand-ivory p-3 sm:p-4 rounded-xl border border-brand-grey-border flex flex-col justify-between space-y-2 sm:space-y-3">
+                <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-bold text-brand-rose border-b border-brand-grey-border pb-1.5">
                   <span>STEP 0{idx + 1}</span>
-                  <span className="capitalize">{product.category}</span>
+                  <span className="capitalize text-[9px] sm:text-[10px] opacity-80">{product.category}</span>
                 </div>
 
                 <div className="relative aspect-square w-full rounded-lg overflow-hidden bg-white border border-brand-grey-border">
@@ -605,7 +605,7 @@ export default function HomePage() {
                 </div>
 
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-brand-charcoal-light">{product.brand}</span>
+                  <span className="text-[9px] sm:text-[10px] uppercase font-bold text-brand-charcoal-light">{product.brand}</span>
                   <h4 className="font-semibold text-xs text-brand-obsidian line-clamp-1">{product.name}</h4>
                   <span className="font-bold text-xs text-brand-obsidian mt-1 block">£{product.price.toFixed(2)}</span>
                 </div>
@@ -614,26 +614,26 @@ export default function HomePage() {
           </div>
 
           {/* Bundle Price & Add All CTA */}
-          <div className="bg-brand-blush/60 p-6 rounded-2xl border border-brand-blush-border flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="bg-brand-blush/60 p-5 sm:p-6 rounded-2xl border border-brand-blush-border flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-6">
             <div>
-              <h4 className="font-serif text-lg font-bold text-brand-obsidian">Complete {activeTab} Routine Bundle</h4>
+              <h4 className="font-serif text-base sm:text-lg font-bold text-brand-obsidian">Complete {activeTab} Routine Bundle</h4>
               <p className="text-xs text-brand-charcoal-light">Save £12.00 when purchasing the complete 5-step regimen together.</p>
             </div>
 
-            <div className="flex items-center gap-6">
-              <div className="text-right">
+            <div className="flex items-center justify-between sm:justify-end gap-4 sm:gap-6 pt-2 sm:pt-0 border-t sm:border-0 border-brand-grey-border/40">
+              <div className="text-left sm:text-right">
                 <span className="text-xs line-through text-brand-charcoal-light block">£{routineTotalPrice.toFixed(2)}</span>
-                <span className="font-bold text-xl text-brand-obsidian">£{bundleDiscountedPrice.toFixed(2)}</span>
+                <span className="font-bold text-lg sm:text-xl text-brand-obsidian">£{bundleDiscountedPrice.toFixed(2)}</span>
               </div>
 
               <button
                 onClick={handleAddRoutineToBag}
-                className={`py-3.5 px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center gap-2 transition-smooth shadow-float ${
+                className={`py-3 sm:py-3.5 px-6 sm:px-8 rounded-full font-semibold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-smooth shadow-float touch-target ${
                   routineAdded ? 'bg-emerald-700 text-white' : 'bg-brand-obsidian text-white hover:bg-brand-rose'
                 }`}
               >
                 {routineAdded ? <Check className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
-                <span>{routineAdded ? 'Routine Added to Bag!' : 'Add Entire Routine'}</span>
+                <span>{routineAdded ? 'Added to Bag!' : 'Add Routine'}</span>
               </button>
             </div>
           </div>
