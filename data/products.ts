@@ -76,8 +76,7 @@ export const PRODUCTS: Product[] = [
     compareAtPrice: 22.00,
     currency: 'GBP',
     images: [
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop',
+      '/images/cosrx_snail_mucin.jpg',
     ],
     category: 'essence',
     skinTypes: ['dry', 'oily', 'combination', 'sensitive', 'normal'],
@@ -204,8 +203,7 @@ export const PRODUCTS: Product[] = [
     compareAtPrice: 20.00,
     currency: 'GBP',
     images: [
-      'https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop',
+      '/images/skin1004_ampoule.jpg',
     ],
     category: 'serum',
     skinTypes: ['sensitive', 'dry', 'oily', 'combination', 'normal'],
@@ -513,7 +511,7 @@ export const PRODUCTS: Product[] = [
     compareAtPrice: 22.00,
     currency: 'GBP',
     images: [
-      'https://images.unsplash.com/photo-1608248597263-00079e96048a?q=80&w=800&auto=format&fit=crop',
+      '/images/laneige_lip_mask.jpg',
     ],
     category: 'lip-care',
     skinTypes: ['dry', 'oily', 'combination', 'sensitive', 'normal'],
@@ -575,7 +573,7 @@ export const PRODUCTS: Product[] = [
     compareAtPrice: 21.00,
     currency: 'GBP',
     images: [
-      'https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=800&auto=format&fit=crop',
+      '/images/axisy_dark_spot_serum.jpg',
     ],
     category: 'serum',
     skinTypes: ['combination', 'oily', 'dry', 'sensitive', 'normal'],
@@ -634,7 +632,7 @@ export const BRANDS = [
     name: 'Beauty of Joseon',
     origin: 'Seoul, South Korea',
     description: 'Inspired by the beauty secrets of the Joseon Dynasty elite, blending Hanbang oriental medicine with modern skincare science.',
-    heroImage: 'https://images.unsplash.com/photo-1608248597263-00079e96048a?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/images/boj_relief_sun.jpg',
     philosophy: 'Reinterpreting traditional Korean remedies into minimal, high-performing skincare routines.',
     keyIngredients: ['Rice Extract', 'Ginseng Root', 'Green Tea', 'Probiotics']
   },
@@ -643,7 +641,7 @@ export const BRANDS = [
     name: 'COSRX',
     origin: 'Seoul, South Korea',
     description: 'Minimalist skin-first brand dedicated to crafting gentle yet highly effective solutions for sensitive and acne-prone skin.',
-    heroImage: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/images/cosrx_snail_mucin.jpg',
     philosophy: 'Expect Tomorrow: targeted minimalist formulas targeting individual skin needs with high functional purity.',
     keyIngredients: ['Snail Mucin', 'Centella', 'Salicylic Acid', 'Propolis']
   },
@@ -652,7 +650,7 @@ export const BRANDS = [
     name: 'Anua',
     origin: 'Seoul, South Korea',
     description: 'Clean K-beauty brand prioritizing natural plant extracts and simple, stress-relieving formulations for reactive skin.',
-    heroImage: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/images/anua_heartleaf_toner.jpg',
     philosophy: 'Relaxing skin stress through honest, eco-conscious botanical formulas.',
     keyIngredients: ['Heartleaf (Houttuynia Cordata)', 'Peach Fruit Extract', 'Niacinamide']
   },
@@ -661,7 +659,7 @@ export const BRANDS = [
     name: 'SKIN1004',
     origin: 'Seoul, South Korea',
     description: 'Hypoallergenic natural skincare using untouched Centella Asiatica harvested directly from Madagascar.',
-    heroImage: 'https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=1200&auto=format&fit=crop',
+    heroImage: '/images/skin1004_ampoule.jpg',
     philosophy: 'Raw nature touching your skin: single-origin botanical purity for maximum barrier recovery.',
     keyIngredients: ['Madagascar Centella', 'Hyalu-Cica', 'Pore-Mosa']
   }
